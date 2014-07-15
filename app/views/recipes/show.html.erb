@@ -1,0 +1,27 @@
+<% if notice %>
+  <div id="notice" class="well bg-info">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>
+      <%= @recipe.title %>
+      <br>
+      <small>Description: <%= @recipe.description %></small>
+    </h1>
+  </div>
+
+  <div class="panel-body lead">
+    <%= @recipe.directions %>
+  </div>
+
+    <div class="row">
+      <p class="col-md-6 text-left">
+        <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: 'btn btn-info' %>
+        <%= link_to 'Back', recipes_path, class: 'btn btn-default' %>
+      </p>
+    </div>
+  </div>
+</div>

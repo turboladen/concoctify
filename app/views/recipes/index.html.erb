@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="text-center">Recipes</h1>
+  </div>
+
+  <table class="table">
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= link_to 'Show', recipe, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-default' %>
