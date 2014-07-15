@@ -24,6 +24,7 @@ gem 'puma'
 
 # Database
 gem 'neo4j', github: 'andreasronge/neo4j'
+gem 'ruby-units'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,6 +41,8 @@ gem 'neo4j', github: 'andreasronge/neo4j'
 gem 'foreman'
 
 group :development, :test do
+  gem 'fabrication'
+  gem 'faker'
   gem 'rspec-rails', '~> 3.0.0'
 end
 
@@ -48,4 +51,8 @@ group :development do
   gem 'meta_request'
   gem 'os'
   gem 'spring'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
 end

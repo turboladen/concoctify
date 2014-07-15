@@ -6,6 +6,7 @@ require "rails"
   action_controller
   action_mailer
   sprockets
+  rails/test_unit
 ).each do |framework|
   begin
     require "#{framework}/railtie"
@@ -30,7 +31,10 @@ module Concoctify
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.neo4j.session_type = :server_db
-    config.neo4j.session_path = ENV['GRAPHENEDB_URL'] || 'http://localhost:7474'
+
+    # config.neo4j.session_type = :embedded_db
+    config.neo4j.session_type = :embedded_db
+    # config.neo4j.session_path = ENV['GRAPHENEDB_URL'] || 'http://localhost:7474'
+    config.neo4j.session_path = File.expand_path('db/neo4j-db', Rails.root)
   end
 end
