@@ -34,4 +34,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.neo4j.session_path = File.expand_path('db/neo4j-db-development', Rails.root)
 end

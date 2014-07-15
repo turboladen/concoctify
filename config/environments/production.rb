@@ -79,4 +79,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   # config.active_record.dump_schema_after_migration = false
+
+  config.neo4j.session_path = File.expand_path('db/neo4j-db-production', Rails.root)
 end
