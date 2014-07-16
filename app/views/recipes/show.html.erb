@@ -8,20 +8,51 @@
   <div class="panel-heading">
     <h1>
       <%= @recipe.title %>
-      <br>
-      <small>Description: <%= @recipe.description %></small>
     </h1>
+    <p class="blog-post-meta">
+      <%= time_tag(@recipe.created_at) %>
+    </p>
   </div>
 
-  <div class="panel-body lead">
-    <%= @recipe.directions %>
+  <div class="row">
+    <dl class="dl-horizontal">
+      <dt>Concoction Type</dt>
+      <dd>
+        <p class="col-md-6 text-left">
+          <%= @recipe.concoction_type %>
+        </p>
+      </dd>
+
+      <dt>Description</dt>
+      <dd>
+        <%= simple_format(@recipe.description, class: 'col-md-6 text-left') %>
+      </dd>
+
+      <dt>Yields</dt>
+      <dd>
+        <p class="col-md-6 text-left">
+          <%= @recipe.yields %>
+        </p>
+      </dd>
+
+      <dt>Directions</dt>
+      <dd>
+        <%= simple_format(@recipe.directions, class: 'col-md-6 text-left') %>
+      </dd>
+
+      <dt>Last Updated</dt>
+      <dd>
+        <p class="col-md-6 text-left">
+          <%= time_ago_in_words(@recipe.updated_at) %></time>
+        </p>
+      </dd>
+    <dl>
   </div>
 
-    <div class="row">
-      <p class="col-md-6 text-left">
-        <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: 'btn btn-info' %>
-        <%= link_to 'Back', recipes_path, class: 'btn btn-default' %>
-      </p>
-    </div>
+  <div class="row">
+    <p class="col-md-6 text-left">
+      <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: 'btn btn-info' %>
+      <%= link_to 'Back', recipes_path, class: 'btn btn-default' %>
+    </p>
   </div>
 </div>

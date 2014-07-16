@@ -2,8 +2,8 @@ class Recipe
   include Neo4j::ActiveNode
 
   property :title
-  validates :title, presence: true
   index :title
+  validates :title, presence: true
 
   property :description
   validates :description, presence: true
@@ -12,8 +12,8 @@ class Recipe
   validates :directions, presence: true
 
   property :concoction_type
-  validates :concoction_type, presence: true
   index :concoction_type
+  validates :concoction_type, presence: true
 
   property :yields
   property :created_at
