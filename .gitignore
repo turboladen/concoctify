@@ -7,7 +7,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/db/neo4j-db-*
+/db/neo4j/
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -15,7 +15,9 @@
 
 *.rbc
 capybara-*.html
+.rake_tasks
 .rspec
+.yardoc/
 /log
 /tmp
 /db/*.sqlite3

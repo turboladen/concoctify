@@ -6,5 +6,5 @@ Fabricator :recipe do
 end
 
 Fabricator :recipe_with_extras, from: :recipe do
-  yields { "#{rand(1..10.0)} gallons"}
+  yields { "#{rand(1..10.0)} gallons" }
 end

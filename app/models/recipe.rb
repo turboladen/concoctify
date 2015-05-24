@@ -1,6 +1,12 @@
 class Recipe
   include Neo4j::ActiveNode
 
+  # Relationships
+  has_many :in, :concoctions, type: :makes_concoctions, class_name: 'Concoction'
+  has_many :in, :ingredients, type: :needs_ingredients, class_name: 'Ingredient'
+  validates :needs_ingredients, presence: true
+
+  # Properties
   property :title
   index :title
   validates :title, presence: true

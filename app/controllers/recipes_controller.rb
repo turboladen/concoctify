@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  respond_to :html
 
   # GET /recipes
   # GET /recipes.json

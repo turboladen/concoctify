@@ -1,13 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails'
 
-%w(
-  neo4j
+%w[
   action_controller
   action_mailer
+  neo4j
   sprockets
   rails/test_unit
-).each do |framework|
+].each do |framework|
   begin
     require "#{framework}/railtie"
   rescue LoadError
@@ -32,8 +32,14 @@ module Concoctify
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # config.neo4j.session_type = :server_db
-    config.neo4j.session_type = :embedded_db
-    # config.neo4j.session_path = ENV['GRAPHENEDB_URL'] || 'http://localhost:7474'
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    # config.active_record.raise_in_transactional_callbacks = true
+
+    neo4j_config = config_for(:neo4j)
+    config.neo4j.session_type = neo4j_config[:server_db]
+    config.neo4j.session_path = neo4j_config[:session_path]
+    config.neo4j.session_options = neo4j_config[:session_options]
+
+    config.generators { |g| g.orm :neo4j }
   end
 end

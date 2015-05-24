@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'recipes/new', :type => :view do
+RSpec.describe 'recipes/new', type: :view do
   before(:each) do
-    assign(:recipe, Recipe.new())
+    assign(:recipe, Recipe.new)
   end
 
   it 'renders new recipe form' do

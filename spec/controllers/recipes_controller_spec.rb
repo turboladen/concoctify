@@ -19,17 +19,16 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe RecipesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Recipe. As you add validations to Recipe, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     Fabricate.attributes_for :recipe
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     { title: '', description: '', directions: '', concoction_type: '' }
-  }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -70,9 +69,9 @@ RSpec.describe RecipesController, type: :controller do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Recipe' do
-        expect {
+        expect do
           post :create, { recipe: valid_attributes }, valid_session
-        }.to change(Recipe, :count).by(1)
+        end.to change(Recipe, :count).by(1)
       end
 
       it 'assigns a newly created recipe as @recipe' do
@@ -108,9 +107,9 @@ RSpec.describe RecipesController, type: :controller do
     end
 
     describe 'with valid params' do
-      let(:new_attributes) {
+      let(:new_attributes) do
         Fabricate.attributes_for :recipe
-      }
+      end
 
       before do
         put :update, { id: recipe.to_param, recipe: new_attributes }, valid_session
@@ -118,15 +117,13 @@ RSpec.describe RecipesController, type: :controller do
 
       it 'updates the requested recipe' do
         recipe.reload
-        expect(recipe.attributes).to eq({
-          'title' => new_attributes[:title],
-          'description' => new_attributes[:description],
-          'directions' => new_attributes[:directions],
-          'concoction_type' => new_attributes[:concoction_type],
-          'yields' => nil,
-          'created_at' => recipe.created_at,
-          'updated_at' => recipe.updated_at
-        })
+        expect(recipe.attributes).to eq('title' => new_attributes[:title],
+                                        'description' => new_attributes[:description],
+                                        'directions' => new_attributes[:directions],
+                                        'concoction_type' => new_attributes[:concoction_type],
+                                        'yields' => nil,
+                                        'created_at' => recipe.created_at,
+                                        'updated_at' => recipe.updated_at)
       end
 
       it 'assigns the requested recipe as @recipe' do
@@ -159,9 +156,9 @@ RSpec.describe RecipesController, type: :controller do
     end
 
     it 'destroys the requested recipe' do
-      expect {
+      expect do
         delete :destroy, { id: recipe.to_param }, valid_session
-      }.to change(Recipe, :count).by(-1)
+      end.to change(Recipe, :count).by(-1)
     end
 
     it 'redirects to the recipes list' do
