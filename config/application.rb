@@ -40,6 +40,9 @@ module Concoctify
     config.neo4j.session_path = neo4j_config[:session_path]
     config.neo4j.session_options = neo4j_config[:session_options]
 
-    config.generators { |g| g.orm :neo4j }
+    config.generators do |g|
+      g.fixture_replacement :fabrication, dir: 'spec/fabricators'
+      g.orm :neo4j
+    end
   end
 end
