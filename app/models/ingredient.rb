@@ -2,7 +2,7 @@ class Ingredient
   include Neo4j::ActiveNode
 
   # Properties
-  property :name
+  property :name, constraint: :unique
   index :name
   property :updated_at
   property :created_at
@@ -12,5 +12,7 @@ class Ingredient
   has_many :in, :concoctions, rel_class: NeedsIngredient
 
   # Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name,
+    presence: true,
+    uniqueness: true
 end

@@ -1,13 +1,18 @@
-test: &local
+local: &local
   :session_type: server_db
-  :session_path: "http://localhost:7474"
+  :session_path:
   :session_options:
     :basic_auth:
       :username: "neo4j"
       :password: "password"
 
+test:
+  <<: *local
+  :session_path: "http://localhost:7475"
+
 development:
   <<: *local
+  :session_path: "http://localhost:7474"
 
 production:
   <<: *local

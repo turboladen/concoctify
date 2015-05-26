@@ -33,5 +33,8 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     Recipe.destroy_all
+    Ingredient.destroy_all
+    Concoction.destroy_all
+    ConcoctionType.destroy_all
   end
 end
