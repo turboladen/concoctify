@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :concoction_types
+  resources :concoctions
+
   resources :recipes
 
   resources :ingredients

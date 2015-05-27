@@ -6,50 +6,79 @@
   });
 </script>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= form_for(@recipe) do |f| %>
+<%= form_for(@recipe) do |f| %>
+  <div class="row">
+    <div class="two columns">
+    </div>
+
+    <div class="eight columns">
       <% if @recipe.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@recipe.errors.count, 'error') %> prohibited this recipe from being saved:</h2>
+          <h2>
+            <%= pluralize(@recipe.errors.count, 'error') %> prohibited this recipe from being saved:
+          </h2>
 
           <ul>
-          <% @recipe.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
+            <% @recipe.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
           </ul>
         </div>
       <% end %>
-
-      <div class="field form-group col-md-5">
-        <%= f.label :title %><br />
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
-
-      <div class="field form-group col-md-2">
-        <%= f.label :yields %><br />
-        <%= f.number_field :yields, class: 'form-control' %>
-      </div>
-
-      <div class="form-group col-md-4">
-        <%= f.label :concoction_type %><br />
-        <% types = { 'beer' => 'Beer', 'wine' => 'Wine' } %>
-        <%= f.select :concoction_type, types, class: 'field form-control' %>
-      </div>
-
-      <div class="field form-group col-md-12">
-        <%= f.label :description %><br />
-        <%= f.text_area :description, class: 'form-control' %>
-      </div>
-
-      <div class="field form-group col-md-12">
-        <%= f.label :directions %><br />
-        <%= f.text_area :directions, class: 'form-control' %>
-      </div>
-
-      <div class="actions form-group col-md-12">
-        <%= f.submit nil, class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="six columns">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, class: "u-full-width" %>
+    </div>
+
+    <div class="six columns">
+      <%= f.label :concoction_type %><br />
+      <% types = { 'beer' => 'Beer', 'wine' => 'Wine' } %>
+      <%= f.select :concoction_type, types, class: "u-full-width" %>
+    </div>
+  </div
+
+  <div class="row">
+    <div class="six columns">
+      <%= f.label :yields %><br />
+      <%= f.number_field :yields, class: "u-full-width" %>
+    </div>
+
+    <div class="six columns">
+      <%= f.label :yields_unit %><br />
+      <% units = { 'gallons' => 'gallons' } %>
+      <%= f.select :yields_unit, units, class: "u-full-width" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="eight columns">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: "u-full-width" %>
+    </div>
+  </div>
+
+      <%# <div class="field form-group"> %>
+      <%#   <%= f.label :ingredient %1><br /> %>
+      <%#   <%= f.select :ingredient, %>
+      <%#     options_from_collection_for_select(Ingredient.all, :id, :name, %>
+      <%#                                        @recipe.ingredients.try(:first).try(:id)) %1> %>
+      <%# </div> %>
+
+
+    <div class="row">
+      <div class="eight columns">
+        <%= f.label :directions %><br />
+        <%= f.text_area :directions, class: "u-full-width" %>
+      </div>
+    </div>
+
+
+    <div class="actions form-group col-md-12">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,81 @@
+// From http://paletton.com/#uid=51U140kmun7f9uUg9sarNinu3e9
+$color-primary-0: #B6B837;	/* Main Primary color */
+$color-primary-1: #F4F681;
+$color-primary-2: #DEE06F;
+$color-primary-3: #909213;
+$color-primary-4: #6F7007;
+
+$color-secondary-1-0: #28864B;	/* Main Secondary color (1) */
+$color-secondary-1-1: #5EB37E;
+$color-secondary-1-2: #51A36F;
+$color-secondary-1-3: #0E6A30;
+$color-secondary-1-4: #055222;
+
+$color-secondary-2-0: #B88837;	/* Main Secondary color (2) */
+$color-secondary-2-1: #F6CB82;
+$color-secondary-2-2: #E0B66F;
+$color-secondary-2-3: #926313;
+$color-secondary-2-4: #714907;
+
+// html, body {
+// 	background-color: $color-primary-0;
+// }
+
+/* Larger than phone */
+@media (min-width: 550px) {
+	.header {
+		margin-top: 8rem;
+	}
+}
+
+@media (min-width: 750px) {
+	.navbar, .navbar-spacer {
+		display: block;
+		width: 100%;
+		height: 6.5rem;
+		background: $color-primary-0;
+		z-index: 99;
+		border-top: 1px solid $color-secondary-1-0;
+		border-bottom: 1px solid $color-secondary-1-0;
+	}
+
+	.navbar-spacer {
+		display: none;
+	}
+
+	.navbar > .container {
+		width: 100%;
+	}
+
+	.navbar-list {
+		list-style: none;
+		margin-bottom: 0;
+	}
+
+	.navbar-item {
+		position: relative;
+		float: left;
+		margin-bottom: 0;
+	}
+
+	.navbar-link {
+		text-transform: uppercase;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: .2rem;
+		margin-right: 35px;
+		text-decoration: none;
+		line-height: 6.5rem;
+		color: $color-secondary-1-3;
+	}
+
+	.navbar-link.active {
+		color: $color-secondary-1-1;
+	}
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+}

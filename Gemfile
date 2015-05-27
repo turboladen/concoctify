@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 
 # HTML View stuff
-gem 'bootstrap-sass', '~> 3.2.0.0'
 gem 'autoprefixer-rails'
 gem 'select2-rails'
 
 # Assets
 gem 'sass-rails', '~> 5.0'
+gem 'sass-rails-source-maps'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -37,8 +37,6 @@ gem 'ruby-units'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'foreman'
-
 group :development, :test do
   gem 'byebug'
   gem 'fabrication'
@@ -50,7 +48,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'better_errors'
   gem 'hairballs'
   gem 'meta_request'
   gem 'quiet_assets'

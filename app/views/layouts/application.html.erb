@@ -4,11 +4,32 @@
   <title>Concoctify</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link  rel='stylesheet' type='text/css'>
+  <%# <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,300,600' %1> %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div class="container">
+  <div class="navbar-spacer"></div>
+
+  <div class="container" id="navbar">
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <%= link_to 'Recipes', recipes_path, class: "navbar-link" %>
+          </li>
+
+          <li class="navbar-item">
+            <%= link_to 'Concoctions', concoctions_path, class: "navbar-link" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container" id="content">
     <%= yield %>
   </div
 

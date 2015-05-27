@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Concoction Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @concoction_types.each do |concoction_type| %>
+      <tr>
+        <td><%= concoction_type.name %></td>
+        <td><%= link_to 'Show', concoction_type %></td>
+        <td><%= link_to 'Edit', edit_concoction_type_path(concoction_type) %></td>
+        <td><%= link_to 'Destroy', concoction_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Concoction type', new_concoction_type_path %>
