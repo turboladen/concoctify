@@ -1,16 +1,18 @@
 <%= form_for(@concoction_type) do |f| %>
   <div class="row">
-    <% if @concoction_type.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@concoction_type.errors.count, "error") %> prohibited this concoction_type from being saved:</h2>
+    <div class="twelve columns">
+      <% if @concoction_type.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@concoction_type.errors.count, "error") %> prohibited this concoction_type from being saved:</h2>
 
-        <ul>
-        <% @concoction_type.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+          <ul>
+          <% @concoction_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
@@ -20,7 +22,5 @@
     </div>
   </div>
 
-  <div class="actions form-group col-md-12">
-    <%= f.submit class: "button-primary" %>
-  </div>
+  <%= f.submit class: "button-primary" %>
 <% end %>

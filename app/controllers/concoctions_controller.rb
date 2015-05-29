@@ -1,5 +1,5 @@
 class ConcoctionsController < ApplicationController
-  before_action :set_concoction, only: [:show, :edit, :update, :destroy]
+  before_action :set_concoction, only: %i[show edit update destroy]
 
   # GET /concoctions
   def index
@@ -42,7 +42,8 @@ class ConcoctionsController < ApplicationController
   # DELETE /concoctions/1
   def destroy
     @concoction.destroy
-    redirect_to concoctions_url, notice: 'Concoction was successfully destroyed.'
+    redirect_to concoctions_url,
+      notice: 'Concoction was successfully destroyed.'
   end
 
   private
