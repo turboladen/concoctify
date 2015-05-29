@@ -36,10 +36,11 @@
 
     <div class="six columns">
       <%= f.label :concoction_type %><br />
-      <% types = { 'beer' => 'Beer', 'wine' => 'Wine' } %>
-      <%= f.select :concoction_type, types, class: "u-full-width" %>
+      <%= f.select :concoction_type,
+            options_from_collection_for_select(ConcoctionType.all, :id, :name, @recipe.concoction_type.try(:id)),
+            class: "u-full-width" %>
     </div>
-  </div
+  </div>
 
   <div class="row">
     <div class="six columns">
@@ -61,24 +62,18 @@
     </div>
   </div>
 
-      <%# <div class="field form-group"> %>
-      <%#   <%= f.label :ingredient %1><br /> %>
-      <%#   <%= f.select :ingredient, %>
-      <%#     options_from_collection_for_select(Ingredient.all, :id, :name, %>
-      <%#                                        @recipe.ingredients.try(:first).try(:id)) %1> %>
-      <%# </div> %>
+  <%= f.fields_for :ingredients do |ingredients_form| %>
+    <%= ingredients_form.label :ingredient %>
+    <%= ingredients_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name, @recipe.ingredients.try(:first).try(:id)) %>
+  <% end %>
 
-
-    <div class="row">
-      <div class="eight columns">
-        <%= f.label :directions %><br />
-        <%= f.text_area :directions, class: "u-full-width" %>
-      </div>
-    </div>
-
-
-    <div class="actions form-group col-md-12">
-      <%= f.submit nil, class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="eight columns">
+      <%= f.label :directions %><br />
+      <%= f.text_area :directions, class: "u-full-width" %>
     </div>
   </div>
+
+
+  <%= f.submit nil, class: 'button-primary' %>
 <% end %>

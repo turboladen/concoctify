@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'normalize-rails'
+gem 'erubis'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

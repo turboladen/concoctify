@@ -25,23 +25,30 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
 
-    respond_with @recipe
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    @recipe.update(recipe_params)
-    respond_with @recipe
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: 'Recipe was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
-    respond_with @recipe
+    redirect_to recipes_url,
+      notice: 'Recipe was successfully destroyed.'
   end
 
   private
@@ -51,9 +58,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list
-  # through.
   def recipe_params
-    params[:recipe]
+    params.require(:recipe)
   end
 end

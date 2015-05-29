@@ -23,8 +23,8 @@ $color-secondary-2-4: #714907;
 
 /* Larger than phone */
 @media (min-width: 550px) {
-	.header {
-		margin-top: 8rem;
+	.container#content {
+		margin-top: 7rem;
 	}
 }
 

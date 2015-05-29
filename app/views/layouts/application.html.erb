@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link  rel='stylesheet' type='text/css'>
-  <%# <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,300,600' %1> %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway' %>
   <%= csrf_meta_tags %>
 </head>
@@ -23,6 +22,14 @@
 
           <li class="navbar-item">
             <%= link_to 'Concoctions', concoctions_path, class: "navbar-link" %>
+          </li>
+
+          <li class="navbar-item">
+            <%= link_to 'Ingredients', ingredients_path, class: "navbar-link" %>
+          </li>
+
+          <li class="navbar-item">
+            <%= link_to 'Concoction Types', concoction_types_path, class: "navbar-link" %>
           </li>
         </ul>
       </div>

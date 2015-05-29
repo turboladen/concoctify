@@ -1,4 +1,6 @@
 <section id="recipes">
+  <p id="notice"><%= notice %></p>
+
   <h1 class="header">Recipes</h1>
 
   <table class="u-full-width">
@@ -13,7 +15,7 @@
       <tr>
         <td><%= recipe.title %></td>
         <td><%= link_to 'Show', recipe, class: 'btn btn-primary' %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_recipe_path(recipe), class: 'button' %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
