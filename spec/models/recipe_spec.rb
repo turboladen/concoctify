@@ -1,21 +1,14 @@
 require 'rails_helper'
 
-describe Recipe do
+RSpec.describe Recipe, type: :model do
   describe 'properties' do
-    it { is_expected.to respond_to :title }
-    it { is_expected.to respond_to :title= }
-    it { is_expected.to respond_to :description }
-    it { is_expected.to respond_to :description= }
-    it { is_expected.to respond_to :directions }
-    it { is_expected.to respond_to :directions= }
-    it { is_expected.to respond_to :yields }
-    it { is_expected.to respond_to :yields= }
-    it { is_expected.to respond_to :yields_unit }
-    it { is_expected.to respond_to :yields_unit= }
-    it { is_expected.to respond_to :created_at }
-    it { is_expected.to respond_to :created_at= }
-    it { is_expected.to respond_to :updated_at }
-    it { is_expected.to respond_to :updated_at= }
+    it { is_expected.to have_property :title }
+    it { is_expected.to have_property :description }
+    it { is_expected.to have_property :directions }
+    it { is_expected.to have_property :yields }
+    it { is_expected.to have_property :yields_unit }
+    it { is_expected.to have_property :created_at }
+    it { is_expected.to have_property :updated_at }
   end
 
   describe 'relationships' do
@@ -31,6 +24,10 @@ describe Recipe do
   end
 
   describe '#concoction_type' do
+    subject do
+      Fabricate(:recipe, concoction_type: Fabricate(:concoction_type))
+    end
+
     it do
       pending 'Figuring out how to validate this'
       should validate_presence_of :concoction_type

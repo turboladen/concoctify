@@ -8,8 +8,8 @@ class ConcoctionType
   index :name
 
   # Relationships
-  has_many :in, :concoctions
-  has_many :in, :recipes
+  has_many :in, :concoctions, origin: :concoction
+  has_many :in, :recipes, origin: :recipe
 
   validates :name,
     presence: true,

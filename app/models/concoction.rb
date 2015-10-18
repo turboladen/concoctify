@@ -3,12 +3,12 @@ class Concoction
 
   # Properties
   property :title, type: String
-  property :updated_at
   property :created_at
+  property :updated_at
 
   # Relationships
-  has_one :out, :concoction_type, type: 'MAKES_CONCOCTION_TYPE'
-  has_one :out, :recipe, type: 'BASED_ON_RECIPE'
+  has_one :out, :concoction_type, type: :makes_concoction_type
+  has_one :out, :recipe, type: :based_on_recipe
   has_many :out, :ingredients, rel_class: NeedsIngredient
 
   validates :title, presence: true

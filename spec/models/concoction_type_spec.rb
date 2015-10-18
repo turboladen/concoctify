@@ -2,12 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ConcoctionType, type: :model do
   describe 'properties' do
-    it { is_expected.to respond_to :name }
-    it { is_expected.to respond_to :name= }
-    it { is_expected.to respond_to :created_at }
-    it { is_expected.to respond_to :created_at= }
-    it { is_expected.to respond_to :updated_at }
-    it { is_expected.to respond_to :updated_at= }
+    it { is_expected.to have_property :name }
+    it { is_expected.to have_property :created_at }
+    it { is_expected.to have_property :updated_at }
   end
 
   describe 'relationships' do
@@ -30,7 +27,8 @@ RSpec.describe ConcoctionType, type: :model do
 
         subject.name = 'test'
         subject.valid?
-        expect(subject.errors[:name].first).to eq 'translation missing'
+        expect(subject.errors[:name].first).
+          to eq "'test' has already been taken"
       end
     end
   end

@@ -13,8 +13,8 @@ class Recipe
   index :title
 
   # Relationships
-  has_one :out, :concoction_type, type: 'MAKES_CONCOCTION_TYPE'
-  has_many :in, :concoctions, type: 'BASED_ON_RECIPE'
+  has_one :out, :concoction_type, type: :makes_concoction_type
+  has_many :in, :concoctions, origin: :concoction
   has_many :out, :ingredients, rel_class: NeedsIngredient
 
   # Validations

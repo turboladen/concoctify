@@ -2,12 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Concoction, type: :model do
   describe 'properties' do
-    it { is_expected.to respond_to :title }
-    it { is_expected.to respond_to :title= }
-    it { is_expected.to respond_to :created_at }
-    it { is_expected.to respond_to :created_at= }
-    it { is_expected.to respond_to :updated_at }
-    it { is_expected.to respond_to :updated_at= }
+    it { is_expected.to have_property :title }
+    it { is_expected.to have_property :created_at }
+    it { is_expected.to have_property :updated_at }
   end
 
   describe 'relationships' do

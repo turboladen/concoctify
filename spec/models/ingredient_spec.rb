@@ -30,7 +30,8 @@ RSpec.describe Ingredient, type: :model do
 
         subject.name = 'test'
         subject.valid?
-        expect(subject.errors[:name].first).to eq "can't be blank"
+        expect(subject.errors[:name].first).
+          to eq "'test' has already been taken"
       end
     end
   end
