@@ -14,6 +14,7 @@ RSpec.describe Recipe, type: :model do
   describe 'relationships' do
     it { is_expected.to respond_to :concoction_type }
     it { is_expected.to respond_to :concoctions }
+    it { is_expected.to respond_to :influencing_recipes }
     it { is_expected.to respond_to :ingredients }
   end
 

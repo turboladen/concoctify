@@ -1,4 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div id="notice" class="well bg-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<div class="row">
+  <h1><%= @concoction.name %></h1>
+
+  <p class="blog-post-meta">
+    <%= time_tag(@concoction.created_at) %>
+  </p>
+
+  <dl class="dl-horizontal six columns">
+    <dt><strong>Concoction Type</strong></dt>
+    <dd>
+      <p>
+        <%= @concoction.concoction_type.name %>
+      </p>
+    </dd>
+  </dl>
+
+  <dl class="dl-horizontal six columns">
+    <dt><strong>Recipe</strong></dt>
+    <dd>
+      <p>
+        <% if @concoction.recipe %>
+          <%= link_to @concoction.recipe.title, recipe_path(@concoction.recipe) %>
+        <% end %>
+      </p>
+    </dd>
+  </dl>
+</div>
 
 <%= link_to 'Edit', edit_concoction_path(@concoction) %> |
 <%= link_to 'Back', concoctions_path %>

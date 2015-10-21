@@ -15,7 +15,7 @@
     <dt><strong>Concoction Type</strong></dt>
     <dd>
       <p>
-        <%= @recipe.concoction_type.name %>
+        <%= @recipe.concoction_type.try(:name) %>
       </p>
     </dd>
 
@@ -27,13 +27,39 @@
     <dt><strong>Yields</strong></dt>
     <dd>
       <p>
-        <%= @recipe.yields %>
+        <%= @recipe.yields %> <%= @recipe.yields_unit %>
       </p>
     </dd>
 
-    <dt>Directions</dt>
+    <dt><strong>Directions</strong></dt>
     <dd>
       <%= simple_format(@recipe.directions) %>
+    </dd>
+
+    <dt><strong>Some Related Concoctions</strong></dt>
+    <dd>
+      <p><%= @recipe.concoctions.count %> concoctions.</p>
+      <ol>
+
+      <% @recipe.concoctions.each do |concoction| %>
+        <li><p>
+          <%= link_to concoction.name, concoction_path(concoction) %>
+        </li></p>
+      <% end %>
+      </ol>
+    </dd>
+
+    <dt><strong>Influencing Recipes</strong></dt>
+    <dd>
+      <p><%= @recipe.influencing_recipes.count %> influencing recipes.</p>
+      <ol>
+
+      <% @recipe.influencing_recipes.each do |influencing_recipe| %>
+        <li><p>
+          <%= link_to influencing_recipe.title, recipe_path(influencing_recipe) %>
+        </li></p>
+      <% end %>
+      </ol>
     </dd>
 
     <dt>Last Updated</dt>

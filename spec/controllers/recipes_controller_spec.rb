@@ -112,18 +112,21 @@ RSpec.describe RecipesController, type: :controller do
       end
 
       before do
-        put :update, { id: recipe.to_param, recipe: new_attributes }, valid_session
+        put :update,
+          { id: recipe.to_param, recipe: new_attributes }, valid_session
       end
 
       it 'updates the requested recipe' do
         recipe.reload
-        expect(recipe.attributes).to eq('title' => new_attributes[:title],
-                                        'description' => new_attributes[:description],
-                                        'directions' => new_attributes[:directions],
-                                        'concoction_type' => new_attributes[:concoction_type],
-                                        'yields' => nil,
-                                        'created_at' => recipe.created_at,
-                                        'updated_at' => recipe.updated_at)
+        expect(recipe.attributes).
+          to eq('title' => new_attributes[:title],
+                'description' => new_attributes[:description],
+                'directions' => new_attributes[:directions],
+                'concoction_type' => new_attributes[:concoction_type],
+                'yields' => new_attributes[:yields].to_f,
+                'yields_unit' => 'gallons',
+                'created_at' => recipe.created_at,
+                'updated_at' => recipe.updated_at)
       end
 
       it 'assigns the requested recipe as @recipe' do
@@ -137,7 +140,8 @@ RSpec.describe RecipesController, type: :controller do
 
     describe 'with invalid params' do
       before do
-        put :update, { id: recipe.to_param, recipe: invalid_attributes }, valid_session
+        put :update,
+          { id: recipe.to_param, recipe: invalid_attributes }, valid_session
       end
 
       it 'assigns the recipe as @recipe' do
@@ -151,9 +155,7 @@ RSpec.describe RecipesController, type: :controller do
   end
 
   describe 'DELETE destroy' do
-    let!(:recipe) do
-      recipe = Recipe.create! valid_attributes
-    end
+    let!(:recipe) { Recipe.create! valid_attributes }
 
     it 'destroys the requested recipe' do
       expect do

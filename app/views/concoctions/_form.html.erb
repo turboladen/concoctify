@@ -1,15 +1,51 @@
-<%= form_for(@concoction) do |f| %>
-  <% if @concoction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@concoction.errors.count, "error") %> prohibited this concoction from being saved:</h2>
+<script>
+  $(document).ready(function() {
+    $("select").select2({
+      placeholder: "Concoction type:"
+    });
+  });
+</script>
 
-      <ul>
-      <% @concoction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for(@concoction) do |f| %>
+  <div class="row">
+    <div class="two columns">
     </div>
-  <% end %>
+
+    <div class="eight columns">
+      <% if @concoction.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@concoction.errors.count, "error") %> prohibited this concoction from being saved:</h2>
+
+          <ul>
+          <% @concoction.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="four columns">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: "u-full-width" %>
+    </div>
+
+    <div class="four columns">
+      <%= f.label :concoction_type %><br />
+      <%= f.select :concoction_type,
+            options_from_collection_for_select(ConcoctionType.all, :id, :name, @concoction.concoction_type.try(:id)),
+            class: "u-full-width" %>
+    </div>
+
+    <div class="four columns">
+      <%= f.label :recipe %><br />
+      <%= f.select :recipe,
+            options_from_collection_for_select(Recipe.all, :id, :title, @concoction.recipe.try(:id)),
+            class: "u-full-width" %>
+    </div>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

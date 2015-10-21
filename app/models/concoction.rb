@@ -1,15 +1,16 @@
 class Concoction
   include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   # Properties
-  property :title, type: String
-  property :created_at
-  property :updated_at
+  property :name, type: String
 
   # Relationships
-  has_one :out, :concoction_type, type: :makes_concoction_type
-  has_one :out, :recipe, type: :based_on_recipe
-  has_many :out, :ingredients, rel_class: NeedsIngredient
+  has_one :out, :concoction_type,
+    type: :MAKES_CONCOCTION_TYPE
 
-  validates :title, presence: true
+  has_one :out, :recipe,
+    type: :USES_RECIPE
+
+  validates :name, presence: true
 end

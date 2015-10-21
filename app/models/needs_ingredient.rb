@@ -1,5 +1,6 @@
 class NeedsIngredient
   include Neo4j::ActiveRel
+  include Neo4j::Timestamps
 
   from_class :any
   to_class Ingredient
@@ -7,8 +8,6 @@ class NeedsIngredient
 
   property :quantity, type: Float
   property :quantity_unit, type: String
-  property :created_at
-  property :updated_at
 
   validates :quantity, presence: true
   validates :quantity_unit, presence: true

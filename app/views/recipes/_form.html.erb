@@ -64,7 +64,7 @@
 
   <%= f.fields_for :ingredients do |ingredients_form| %>
     <%= ingredients_form.label :ingredient %>
-    <%= ingredients_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name, @recipe.ingredients.try(:first).try(:id)) %>
+    <%= ingredients_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name, @recipe.ingredients.try(:first).try(:id)), include_blank: true, prompt: true %>
   <% end %>
 
   <div class="row">
@@ -72,8 +72,13 @@
       <%= f.label :directions %><br />
       <%= f.text_area :directions, class: "u-full-width" %>
     </div>
-  </div>
 
+    <%= f.fields_for :influencing_recipes do |influencing_recipes_form| %>
+      <%= influencing_recipes_form.label :influencing_recipes %>
+      <%= influencing_recipes_form.select :influencing_recipes, Recipe.where_not(id: @recipe.id).map { |r| [r.title, r.id] }, multiple: true %>
+      <%# <%= influencing_recipes_form.select :influencing_recipes, options_from_collection_for_select(Recipe.all, :id, :title, @recipe.influencing_recipe_ids), include_blank: true, prompt: true, multiple: true %1> %>
+    <% end %>
+  </div>
 
   <%= f.submit nil, class: 'button-primary' %>
 <% end %>

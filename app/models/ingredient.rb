@@ -1,15 +1,12 @@
 class Ingredient
   include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   # Properties
-  property :name, constraint: :unique
-  index :name
-  property :updated_at
-  property :created_at
+  property :name, constraint: :unique, index: :exact
 
   # Relationships
   has_many :in, :recipes, rel_class: NeedsIngredient
-  has_many :in, :concoctions, rel_class: NeedsIngredient
 
   # Validations
   validates :name,

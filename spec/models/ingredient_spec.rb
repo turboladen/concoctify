@@ -12,7 +12,6 @@ RSpec.describe Ingredient, type: :model do
 
   describe 'relationships' do
     it { is_expected.to respond_to :recipes }
-    it { is_expected.to respond_to :concoctions }
   end
 
   describe 'validations' do
