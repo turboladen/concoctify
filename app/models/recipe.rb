@@ -16,8 +16,8 @@ class Recipe
   has_many :in, :concoctions,
     type: :USES_RECIPE
 
-  has_many :both, :influencing_recipes,
-    type: :INFLUENCING_RECIPE,
+  has_many :out, :influencing_recipes,
+    type: :INFLUENCED_BY,
     model_class: :Recipe
 
   has_many :out, :ingredients,
