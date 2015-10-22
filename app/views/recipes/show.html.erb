@@ -19,6 +19,18 @@
       </p>
     </dd>
 
+    <dt><strong>Ingredients</strong></dt>
+    <dd>
+      <p><%= @recipe.ingredients.count %> ingredients.</p>
+      <ol>
+
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li><p>
+            <%= ingredient_line_item(ingredient) %>
+        </li></p>
+      <% end %>
+      </ol>
+    </dd>
     <dt><strong>Description</strong></dt>
     <dd>
       <%= simple_format(@recipe.description) %>
