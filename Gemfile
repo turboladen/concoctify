@@ -13,9 +13,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
-gem 'turbolinks'
+gem 'turbolinks', '>= 2.4.0'
 gem 'normalize-rails'
 gem 'erubis'
+gem 'react-rails', '~> 1.4.0'
+gem 'active_model_serializers', '0.10.0.rc3'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -55,7 +57,6 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'os'
-  gem 'rack-minitest'
   gem 'rubocop'
   # gem 'sass-rails-source-maps'
 end
