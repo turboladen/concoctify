@@ -1,7 +1,15 @@
 <script>
   $(document).ready(function() {
-    $("select").select2({
-      placeholder: "Concoction type:"
+    $("#recipe_concoction_type_id").select2({
+      placeholder: "Pick me!"
+    });
+
+    $("#recipe_ingredients_ingredient_ids").select2({
+      placeholder: "Pick me!"
+    });
+
+    $("#recipe_influencing_recipes_influencing_recipe_ids").select2({
+      placeholder: "Pick me!"
     });
   });
 </script>
@@ -36,9 +44,9 @@
 
     <div class="six columns">
       <%= f.label :concoction_type %><br />
-      <%= f.select :concoction_type,
-            options_from_collection_for_select(ConcoctionType.all, :id, :name, @recipe.concoction_type.try(:id)),
-            class: "u-full-width" %>
+      <%= f.collection_select :concoction_type_id,
+        ConcoctionType.all, :id, :name, include_blank: true,
+            class: "u-full-width", id: 'concoction-type', prompt: '' %>
     </div>
   </div>
 
@@ -75,8 +83,7 @@
 
     <%= f.fields_for :influencing_recipes do |influencing_recipes_form| %>
       <%= influencing_recipes_form.label :influencing_recipes %>
-      <%= influencing_recipes_form.select :influencing_recipes, Recipe.where_not(id: @recipe.id).map { |r| [r.title, r.id] }, multiple: true %>
-      <%# <%= influencing_recipes_form.select :influencing_recipes, options_from_collection_for_select(Recipe.all, :id, :title, @recipe.influencing_recipe_ids), include_blank: true, prompt: true, multiple: true %1> %>
+      <%= influencing_recipes_form.collection_select :influencing_recipe_ids, other_recipes_for_select(@recipe.id), :id, :title, { selected: @recipe.influencing_recipe_ids, include_blank: true, prompt: '' }, { multiple: true } %>
     <% end %>
   </div>
 
