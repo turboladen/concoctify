@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  # root to: 'recipes#index'
   resources :concoction_types
   resources :concoctions
 
-  resources :recipes
+  resources :recipes do
+    get :add_ingredient, on: :collection
+  end
 
   resources :ingredients
 

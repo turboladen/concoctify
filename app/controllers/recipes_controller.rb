@@ -17,6 +17,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def add_ingredient
+    @ingredients_form = params[:form]
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /recipes/1/edit
   def edit
   end

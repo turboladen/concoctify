@@ -63,8 +63,10 @@
   </div>
 
   <%= f.fields_for :ingredients do |ingredients_form| %>
-    <%= ingredients_form.label :ingredient %>
-    <%= ingredients_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name, @recipe.ingredients.try(:first).try(:id)), include_blank: true, prompt: true %>
+    <div class="row" id="ingredient-group">
+      <%= render partial: 'ingredients_fields', locals: { f: ingredients_form, child_index: Time.now.to_i } %>
+      <%= link_to 'Add Ingredient', add_ingredient_recipes_path(form: ingredients_form) %>
+    </div>
   <% end %>
 
   <div class="row">

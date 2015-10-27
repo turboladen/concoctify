@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'normalize-rails'
 gem 'erubis'
+gem 'opal-rails'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

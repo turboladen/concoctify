@@ -1,0 +1,17 @@
+<div class="two columns">
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, step: 'any' %>
+  </div>
+</div>
+
+<div class="field two columns">
+  <%= f.label :quantity_unit %>
+  <%= f.text_field :quantity_unit %>
+</div>
+
+<div class="field two columns">
+  <%= f.label :name %>
+  <%= f.collection_select :ingredient_ids, Ingredient.all, :id, :name, { include_blank: true, prompt: '' } %>
+</div>
+

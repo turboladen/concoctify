@@ -35,10 +35,15 @@ module Concoctify
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
 
+    # Neo4j
     neo4j_config = config_for(:neo4j)
     config.neo4j.session_type = neo4j_config[:server_db]
     config.neo4j.session_path = neo4j_config[:session_path]
     config.neo4j.session_options = neo4j_config[:session_options]
+
+    # opalrb
+    config.opal.enable_specs = true
+    config.opal.spec_location = 'spec/opal'
 
     config.generators do |g|
       g.fixture_replacement :fabrication, dir: 'spec/fabricators'
