@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'application#index'
   resources :concoction_types
   resources :concoctions
 
