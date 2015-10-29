@@ -1,51 +1,45 @@
-class ConcoctionTypesController < ApplicationController
+class ConcoctionTypesController < ApiController
+  respond_to :json_api
   before_action :set_concoction_type, only: %i[show edit update destroy]
 
   # GET /concoction_types
   def index
     @concoction_types = ConcoctionType.all.order :name
+
+    respond_with @concoction_types
   end
 
   # GET /concoction_types/1
   def show
+    respond_with @concoction_type
   end
 
   # GET /concoction_types/new
   def new
     @concoction_type = ConcoctionType.new
-  end
 
-  # GET /concoction_types/1/edit
-  def edit
+    respond_with @concoction_type
   end
 
   # POST /concoction_types
   def create
-    @concoction_type = ConcoctionType.new(concoction_type_params)
+    @concoction_type = ConcoctionType.create(concoction_type_params)
 
-    if @concoction_type.save
-      redirect_to @concoction_type,
-        notice: 'Concoction type was successfully created.'
-    else
-      render :new
-    end
+    respond_with @concoction_type
   end
 
   # PATCH/PUT /concoction_types/1
   def update
-    if @concoction_type.update(concoction_type_params)
-      redirect_to @concoction_type,
-        notice: 'Concoction type was successfully updated.'
-    else
-      render :edit
-    end
+    @concoction_type.update(concoction_type_params)
+
+    respond_with @concoction_type
   end
 
   # DELETE /concoction_types/1
   def destroy
     @concoction_type.destroy
-    redirect_to concoction_types_url,
-      notice: 'Concoction type was successfully destroyed.'
+
+    respond_with @concoction_type
   end
 
   private
