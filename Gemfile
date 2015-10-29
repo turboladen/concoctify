@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.2'
+gem 'rails-api', '~> 0.4.0'
+
+# Serving things
+gem 'puma'
 
 # HTML View stuff
 gem 'autoprefixer-rails'
@@ -16,10 +20,9 @@ gem 'normalize-rails'
 gem 'erubis'
 gem 'ember-cli-rails'
 
-gem 'sdoc', '~> 0.4.0',          group: :doc
-
-# Serving things
-gem 'puma'
+# Controller things
+gem 'responders', '~> 2.0'
+gem 'active_model_serializers', '~> 0.10.0.rc3'
 
 # Database
 gem 'neo4j', '~> 5.2.10'
@@ -36,6 +39,8 @@ gem 'ruby-units'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development, :test do
   gem 'byebug'

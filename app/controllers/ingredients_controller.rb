@@ -1,49 +1,45 @@
-class IngredientsController < ApplicationController
+class IngredientsController < ApiController
+  respond_to :json_api
   before_action :set_ingredient, only: %i[show edit update destroy]
 
   # GET /ingredients
   def index
     @ingredients = Ingredient.all.order :name
+
+    respond_with @ingredients
   end
 
   # GET /ingredients/1
   def show
+    respond_with @ingredient
   end
 
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
-  end
 
-  # GET /ingredients/1/edit
-  def edit
+    respond_with @ingredient
   end
 
   # POST /ingredients
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = Ingredient.create(ingredient_params)
 
-    if @ingredient.save
-      redirect_to @ingredient, notice: 'Ingredient was successfully created.'
-    else
-      render :new
-    end
+    respond_with @ingredient
   end
 
   # PATCH/PUT /ingredients/1
   def update
-    if @ingredient.update(ingredient_params)
-      redirect_to @ingredient, notice: 'Ingredient was successfully updated.'
-    else
-      render :edit
-    end
+    @ingredient.update(ingredient_params)
+
+    respond_with @ingredient
   end
 
   # DELETE /ingredients/1
   def destroy
     @ingredient.destroy
-    redirect_to ingredients_url,
-      notice: 'Ingredient was successfully destroyed.'
+
+    respond_with @ingredient
   end
 
   private

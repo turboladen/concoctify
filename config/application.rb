@@ -35,6 +35,8 @@ module Concoctify
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
 
+    config.middleware.use EmberCLI::Middleware
+
     neo4j_config = config_for(:neo4j)
     config.neo4j.session_type = neo4j_config[:server_db]
     config.neo4j.session_path = neo4j_config[:session_path]
