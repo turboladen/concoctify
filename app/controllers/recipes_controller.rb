@@ -1,54 +1,50 @@
-class RecipesController < ApplicationController
+class RecipesController < ApiController
+  respond_to :json_api
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes
   # GET /recipes.json
   def index
     @recipes = Recipe.all
+
+    respond_with @recipes
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    respond_with @recipe
   end
 
   # GET /recipes/new
   def new
     @recipe = Recipe.new
-  end
 
-  # GET /recipes/1/edit
-  def edit
+    respond_with @recipe
   end
 
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create(recipe_params)
 
-    if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
-    else
-      render :new
-    end
+    respond_with @recipe
   end
 
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: 'Recipe was successfully updated.'
-    else
-      render :edit
-    end
+    @recipe.update(recipe_params)
+
+    respond_with @recipe
   end
 
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
-    redirect_to recipes_url,
-      notice: 'Recipe was successfully destroyed.'
+
+    respond_with @recipe
   end
 
   private

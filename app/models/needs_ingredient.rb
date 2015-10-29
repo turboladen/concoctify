@@ -4,11 +4,15 @@ class NeedsIngredient
 
   from_class :any
   to_class Ingredient
-  type 'needs_ingredient'
+  type 'needs_ingredient'.freeze
 
   property :quantity, type: Float
   property :quantity_unit, type: String
 
   validates :quantity, presence: true
   validates :quantity_unit, presence: true
+
+  def ingredient
+    to_node
+  end
 end
