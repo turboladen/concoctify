@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.2'
 gem 'rails-api', '~> 0.4.0'
 
-# Serving things
-gem 'puma'
-
 # HTML View stuff
 gem 'autoprefixer-rails'
 gem 'select2-rails'
@@ -22,7 +19,8 @@ gem 'ember-cli-rails'
 
 # Controller things
 gem 'responders', '~> 2.0'
-gem 'active_model_serializers', '~> 0.10.0.rc3'
+gem 'active_model_serializers', '~> 0.10.0.rc3', github: 'rails-api/active_model_serializers'
+gem 'jbuilder'
 
 # Database
 gem 'neo4j', '~> 5.2.10'
@@ -41,6 +39,11 @@ gem 'ruby-units'
 # gem 'debugger', group: [:development, :test]
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+group :production do
+  # Serving things
+  gem 'puma'
+end
 
 group :development, :test do
   gem 'byebug'

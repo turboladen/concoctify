@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: fee37d5c002d43547c0c2fb6b2fa3710a2b2517f
+  specs:
+    active_model_serializers (0.10.0.rc3)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -23,10 +32,6 @@ GEM
     active_attr (0.8.5)
       activemodel (>= 3.0.2, < 5.0)
       activesupport (>= 3.0.2, < 5.0)
-    active_model_serializers (0.10.0.rc3)
-      actionpack (>= 4.0)
-      activemodel (>= 4.0)
-      railties (>= 4.0)
     activejob (4.2.2)
       activesupport (= 4.2.2)
       globalid (>= 0.3.0)
@@ -95,6 +100,9 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.6.0.1)
     i18n (0.7.0)
+    jbuilder (2.3.2)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
     jquery-rails (4.0.4)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -268,7 +276,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.0.rc3)
+  active_model_serializers (~> 0.10.0.rc3)!
   autoprefixer-rails
   byebug
   coffee-rails (~> 4.1.0)
@@ -278,6 +286,7 @@ DEPENDENCIES
   faker
   flamegraph
   hairballs
+  jbuilder
   jquery-rails
   meta_request
   neo4j (~> 5.2.10)
