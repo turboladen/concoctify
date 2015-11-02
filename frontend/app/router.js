@@ -6,9 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('ingredients');
-  this.route('concoction-types');
-  this.route('recipes');
+  this.route('list-ingredients', { path: '/ingredients' });
+  this.route('list-concoction-types', { path: '/concoction_types' });
+  this.route('list-recipes', { path: '/recipes' });
+  this.route('show-recipe', { path: '/recipes/:recipe_id' });
 });
 
 export default Router;

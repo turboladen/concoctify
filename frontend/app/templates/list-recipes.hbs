@@ -3,12 +3,10 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Link</th>
   </tr>
 {{#each model as |recipe|}}
   <tr>
-    <td>{{recipe.title}}</td>
-    <td>{{#link-to "recipe" recipe}}show{{/link-to}}</td>
+    <td>{{#link-to "show-recipe" recipe}}{{recipe.title}}{{/link-to}}</td>
   </tr>
 {{/each}}
 </table>

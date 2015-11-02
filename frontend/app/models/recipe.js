@@ -1,12 +1,15 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  title: DS.attr('string'),
+  createdAt: DS.attr('date'),
   description: DS.attr('string'),
   directions: DS.attr('string'),
+  title: DS.attr('string'),
+  updatedAt: DS.attr('date'),
   yields: DS.attr('number'),
   yieldsUnit: DS.attr('string'),
 
-  needsIngredient: DS.hasMany('needsIngredient'),
-  concoctionType: DS.belongsTo('concoctionType')
+  concoctionType: DS.belongsTo('concoctionType'),
+  influencingRecipes: DS.hasMany('recipe', { async: true }),
+  needsIngredients: DS.hasMany('needsIngredient')
 });
