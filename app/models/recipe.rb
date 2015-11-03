@@ -29,4 +29,16 @@ class Recipe
   validates :directions, presence: true
   # TODO: Can't figure out how to validate this.
   # validates :concoction_type, presence: true
+
+  def self.distinct_ingredients
+    ingredients(:i).order(:name).pluck('DISTINCT i')
+  end
+
+  def self.distinct_concoction_types
+    concoction_type(:c).order(:name).pluck('DISTINCT c')
+  end
+
+  def distinct_ingredients
+    ingredients(:i).order(:name).pluck('DISTINCT i')
+  end
 end

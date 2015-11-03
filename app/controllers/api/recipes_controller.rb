@@ -8,6 +8,12 @@ module Api
     def index
       @recipes = Recipe.all
 
+      @includeds = []
+
+      @includeds += @recipes.distinct_ingredients
+      @includeds += @recipes.ingredients.rels.to_a
+      @includeds += @recipes.distinct_concoction_types
+
       respond_with @recipes
     end
 
@@ -16,7 +22,7 @@ module Api
     def show
       @includeds = []
 
-      @includeds += @recipe.ingredients
+      @includeds += @recipe.distinct_ingredients
       @includeds += @recipe.ingredients.rels
       @includeds += [@recipe.concoction_type]
 
