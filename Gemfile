@@ -21,6 +21,8 @@ gem 'ember-cli-rails'
 gem 'responders', '~> 2.0'
 gem 'active_model_serializers', '~> 0.10.0.rc3', github: 'rails-api/active_model_serializers'
 gem 'jbuilder'
+gem 'oj'
+gem 'oj_mimic_json'
 
 # Database
 gem 'neo4j', '~> 5.2.10'
