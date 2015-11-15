@@ -3,23 +3,18 @@ json.id included.id
 
 case included
 when ConcoctionType
-  json.attributes { json.name included.name }
-  json.links { json.self api_concoction_type_url(included) }
+  json.partial! 'concoction_type', locals: {
+    concoction_type: included,
+    recipe: recipe
+  }
 when Ingredient
-  json.attributes { json.name included.name }
-  json.links { json.self api_ingredient_url(included) }
+  json.partial! 'ingredient', locals: {
+    ingredient: included,
+    recipe: recipe
+  }
 when NeedsIngredient
-  json.attributes do
-    json.quantity included.quantity
-    json.quantity_unit included.quantity_unit
-  end
-
-  json.relationships do
-    json.ingredient do
-      json.data do
-        json.type included.to_node.model_name.plural
-        json.id included.to_node.id
-      end
-    end
-  end
+  json.partial! 'needs_ingredient', locals: {
+    needs_ingredient: included,
+    recipe: recipe
+  }
 end

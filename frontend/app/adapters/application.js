@@ -6,8 +6,5 @@ export default DS.JSONAPIAdapter.extend({
     "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
   },
   host: 'http://concoctify.dev',
-  pathForType: function(type) {
-    return `${Ember.String.underscore(type)}s`;
-  },
   namespace: 'api'
 });

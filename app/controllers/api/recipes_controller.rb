@@ -20,12 +20,6 @@ module Api
     # GET /recipes/1
     # GET /recipes/1.json
     def show
-      @includeds = []
-
-      @includeds += @recipe.distinct_ingredients
-      @includeds += @recipe.ingredients.rels
-      @includeds += [@recipe.concoction_type]
-
       respond_with @recipe
     end
 

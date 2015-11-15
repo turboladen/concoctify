@@ -17,7 +17,6 @@ json.relationships do
     json.data do
       json.type 'concoction_types'
       json.id recipe.concoction_type.try(:id)
-      json.attributes { json.name recipe.concoction_type.try(:name) }
     end
   end
 

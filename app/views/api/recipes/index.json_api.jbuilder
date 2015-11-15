@@ -6,4 +6,6 @@ json.data(@recipes) do |recipe|
   json.partial! 'recipe', recipe: recipe
 end
 
-json.included @includeds, partial: 'includeds', as: :included
+json.included(@recipes) do |recipe|
+  json.array! recipe.includeds, partial: 'api/recipes/includeds', as: :included, locals: { recipe: recipe }
+end
