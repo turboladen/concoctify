@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-var Router = Ember.Router.extend({
+const Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
+Router.map(function () {
   this.route('list-ingredients', { path: '/ingredients' });
   this.route('list-concoction-types', { path: '/concoction-types' });
   this.route('list-recipes', { path: '/recipes' });
