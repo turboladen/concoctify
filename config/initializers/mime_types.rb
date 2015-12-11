@@ -4,11 +4,12 @@
 # Mime::Type.register "text/richtext", :rtf
 
 module Concoctify
-  JSON_API_MIME = 'application/vnd.api+json'
+  API_MIME_TYPES = %w[
+    application/vnd.api+json
+    text/x-json
+    application/json
+  ]
 end
 
-Mime::Type.register Concoctify::JSON_API_MIME, :json_api
-
-ActionDispatch::ParamsParser::DEFAULT_PARSERS[Mime::Type.lookup(Concoctify::JSON_API_MIME)] = lambda do |body|
-  JSON.parse(body)
-end
+Mime::Type.unregister :json
+Mime::Type.register 'application/json', :json, Concoctify::API_MIME_TYPES

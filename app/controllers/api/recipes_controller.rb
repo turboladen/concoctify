@@ -1,6 +1,5 @@
 module Api
   class RecipesController < ApiController
-    respond_to :json_api
     before_action :set_recipe, only: %i[show edit update destroy influencing_recipes]
 
     # GET /recipes
@@ -14,13 +13,14 @@ module Api
       @includeds += @recipes.ingredients.rels.to_a
       @includeds += @recipes.distinct_concoction_types
 
-      respond_with @recipes
+      render json: @recipes, include: %w[concoction_type], content_type: 'application/vnd.json+api'
     end
 
     # GET /recipes/1
     # GET /recipes/1.json
     def show
-      respond_with @recipe
+      # render json: @recipe, include: %w[concoction_type], serializer: RecipeSerializer, content_type: 'application/vnd.json+api'
+      render json: @recipe, include: %w[concoction_type]
     end
 
     # GET /recipes/1/influencing_recipes
