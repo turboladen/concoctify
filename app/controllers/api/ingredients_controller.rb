@@ -6,7 +6,7 @@ module Api
     def index
       @ingredients = Ingredient.all.order :name
 
-      respond_with @ingredients
+      render json: @ingredients, content_type: 'application/vnd.json+api'
     end
 
     # GET /ingredients/1

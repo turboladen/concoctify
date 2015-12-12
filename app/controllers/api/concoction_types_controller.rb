@@ -6,7 +6,7 @@ module Api
     def index
       @concoction_types = ConcoctionType.all.order :name
 
-      respond_with @concoction_types
+      render json: @concoction_types, content_type: 'application.vnd.json+api'
     end
 
     # GET /concoction_types/1
