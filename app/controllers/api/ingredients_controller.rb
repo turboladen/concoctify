@@ -1,6 +1,5 @@
 module Api
-  class IngredientsController < ApiController
-    respond_to :json_api
+  class IngredientsController < ApplicationController
     before_action :set_ingredient, only: %i[show edit update destroy]
 
     # GET /ingredients

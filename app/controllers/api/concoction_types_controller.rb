@@ -1,6 +1,5 @@
 module Api
-  class ConcoctionTypesController < ApiController
-    respond_to :json_api
+  class ConcoctionTypesController < ApplicationController
     before_action :set_concoction_type, only: %i[show edit update destroy]
 
     # GET /concoction_types

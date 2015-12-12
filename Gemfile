@@ -7,20 +7,8 @@ gem 'rails-api', '~> 0.4.0'
 gem 'autoprefixer-rails'
 gem 'select2-rails'
 
-# Assets
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'normalize-rails'
-gem 'erubis'
-gem 'ember-cli-rails'
-
 # Controller things
-gem 'responders', '~> 2.0'
 gem 'active_model_serializers', '~> 0.10.0.rc3', github: 'rails-api/active_model_serializers'
-gem 'jbuilder'
 gem 'oj'
 gem 'oj_mimic_json'
 
