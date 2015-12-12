@@ -9,7 +9,7 @@ export default DS.Model.extend({
   yields: DS.attr('number'),
   yieldsUnit: DS.attr('string'),
 
-  concoctionType: DS.belongsTo('concoctionType'),
+  concoctionType: DS.belongsTo('concoctionType', { async: false }),
   influencingRecipes: DS.hasMany('recipe', { async: true }),
-  needsIngredients: DS.hasMany('needsIngredient')
+  needsIngredients: DS.hasMany('needsIngredient', { async: false })
 });
