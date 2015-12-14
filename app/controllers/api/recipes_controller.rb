@@ -13,13 +13,13 @@ module Api
       @includeds += @recipes.ingredients.rels.to_a
       @includeds += @recipes.distinct_concoction_types
 
-      render json: @recipes, include: %w[concoction_type], content_type: 'application/vnd.json+api'
+      render json: @recipes, include: %w[concoction_type ingredients needs_ingredients], content_type: 'application/vnd.json+api'
     end
 
     # GET /recipes/1
     # GET /recipes/1.json
     def show
-      render json: @recipe, include: %w[concoction_type]
+      render json: @recipe, include: %w[concoction_type ingredients needs_ingredients]
     end
 
     # GET /recipes/1/influencing_recipes
