@@ -5,10 +5,14 @@ module Api
     # GET /concoctions
     def index
       @concoctions = Concoction.all
+
+      render json: @concoctions, include: %w[concoction_type ingredients needs_ingredients],
+                                 content_type: 'application/vnd.json+api'
     end
 
     # GET /concoctions/1
     def show
+      render json: @concoction, include: %w[concoction_type ingredients needs_ingredients]
     end
 
     # GET /concoctions/new
