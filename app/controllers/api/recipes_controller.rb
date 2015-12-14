@@ -7,13 +7,8 @@ module Api
     def index
       @recipes = Recipe.all
 
-      @includeds = []
-
-      @includeds += @recipes.distinct_ingredients
-      @includeds += @recipes.ingredients.rels.to_a
-      @includeds += @recipes.distinct_concoction_types
-
-      render json: @recipes, include: %w[concoction_type ingredients needs_ingredients], content_type: 'application/vnd.json+api'
+      render json: @recipes, include: %w[concoction_type ingredients needs_ingredients],
+                             content_type: 'application/vnd.json+api'
     end
 
     # GET /recipes/1
