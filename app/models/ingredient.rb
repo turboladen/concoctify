@@ -3,7 +3,7 @@ class Ingredient
   include Neo4j::Timestamps
 
   # Properties
-  property :name, constraint: :unique, index: :exact
+  property :name, constraint: :unique
 
   # Relationships
   has_many :in, :recipes, rel_class: NeedsIngredient

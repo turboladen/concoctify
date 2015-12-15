@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: f562449bd439d1295b91b41b01d5b780c793100a
+  revision: 1301b52696263e5f8ac5904a363b0f28f4dbf397
   specs:
     active_model_serializers (0.10.0.rc3)
       actionpack (>= 4.0)
@@ -111,13 +111,13 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    neo4j (5.2.15)
+    neo4j (6.0.1)
       active_attr (~> 0.8)
       activemodel (~> 4)
       activesupport (~> 4)
-      neo4j-core (~> 5.1.10)
+      neo4j-core (~> 6.0.0.rc.1)
       orm_adapter (~> 0.5.0)
-    neo4j-core (5.1.12)
+    neo4j-core (6.0.1)
       activesupport
       faraday (~> 0.9.0)
       faraday_middleware (~> 0.9.1)
@@ -224,7 +224,7 @@ GEM
       thor (~> 0.14)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
-    spring (1.5.0)
+    spring (1.6.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -256,7 +256,7 @@ DEPENDENCIES
   hairballs
   kaminari-neo4j
   meta_request
-  neo4j (~> 5.2.10)
+  neo4j (~> 6.0.0)
   oj
   oj_mimic_json
   os

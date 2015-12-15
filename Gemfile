@@ -14,7 +14,7 @@ gem 'oj_mimic_json'
 gem 'kaminari-neo4j'
 
 # Database
-gem 'neo4j', '~> 5.2.10'
+gem 'neo4j', '~> 6.0.0'
 gem 'ruby-units'
 
 # Use ActiveModel has_secure_password

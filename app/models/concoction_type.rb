@@ -4,7 +4,6 @@ class ConcoctionType
 
   # Properties
   property :name, type: String, constraint: :unique
-  index :name
 
   # Relationships
   has_many :in, :recipes, type: :MAKES_CONCOCTION_TYPE
