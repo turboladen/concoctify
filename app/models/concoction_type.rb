@@ -11,4 +11,12 @@ class ConcoctionType
   validates :name,
     presence: true,
     uniqueness: true
+
+  def concoctions
+    recipes.flat_map { |recipe| recipe.concoctions.uniq.to_a }
+  end
+
+  def ingredients
+    recipes.flat_map { |recipe| recipe.ingredients.uniq.to_a }
+  end
 end
