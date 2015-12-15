@@ -14,12 +14,12 @@ module Api
 
     # GET /ingredients/1
     def show
-      respond_with @ingredient
+      render json: @ingredient
     end
 
     # GET /ingredients/1/recipes
     def recipes
-      render json: paginate(@ingredient.recipes), include: %w[concoction_type needs_ingredients]
+      render json: paginate(@ingredient.recipes)
     end
 
     # GET /ingredients/1/concoctions

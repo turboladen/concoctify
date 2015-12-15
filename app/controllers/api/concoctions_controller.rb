@@ -11,8 +11,7 @@ module Api
     def index
       @concoctions = paginate(Concoction.all)
 
-      render json: @concoctions, include: %w[concoction_type ingredients needs_ingredients],
-                                 content_type: 'application/vnd.json+api'
+      render json: @concoctions, content_type: 'application/vnd.json+api'
     end
 
     # GET /concoctions/1
@@ -22,7 +21,7 @@ module Api
 
     # GET /concoctions/1/recipe
     def recipe
-      render json: @concoction.recipe, include: %w[concoction_type ingredients needs_ingredients]
+      render json: @concoction.recipe
     end
 
     # GET /concoctions/new

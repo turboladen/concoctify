@@ -7,24 +7,21 @@ module Api
                influencing_recipes concoctions ingredients concoction_type
     ]
 
-    # GET /recipes
     # GET /recipes.json
     def index
       @recipes = paginate(Recipe.all)
 
-      render json: @recipes, include: %w[concoction_type ingredients needs_ingredients],
-                             content_type: 'application/vnd.json+api'
+      render json: @recipes, content_type: 'application/vnd.json+api'
     end
 
-    # GET /recipes/1
     # GET /recipes/1.json
     def show
-      render json: @recipe, include: %w[concoction_type ingredients needs_ingredients]
+      render json: @recipe
     end
 
     # GET /recipes/1/influencing_recipes
     def influencing_recipes
-      render json: paginate(@recipe.influencing_recipes), include: %w[concoction_type ingredients needs_ingredients]
+      render json: paginate(@recipe.influencing_recipes)
     end
 
     # GET /recipes/1/concoctions

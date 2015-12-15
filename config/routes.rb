@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get :recipes, on: :member
     end
 
+    resources :needs_ingredients, except: %i[edit]
+
     resources :concoction_types, except: %i[edit] do
       get :concoctions, on: :member
       get :ingredients, on: :member

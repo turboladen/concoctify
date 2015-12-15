@@ -20,7 +20,7 @@ module Api
 
     # GET /concoction_types/1/recipes
     def recipes
-      render json: paginate(@concoction_type.recipes), include: %w[ingredients needs_ingredients concoction_type]
+      render json: paginate(@concoction_type.recipes)
     end
 
     # GET /concoction_types/1/concoctions
