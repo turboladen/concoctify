@@ -1,10 +1,12 @@
 module Api
   class ConcoctionTypesController < ApplicationController
+    include ControllerPaging
+
     before_action :set_concoction_type, only: %i[show edit update destroy]
 
     # GET /concoction_types
     def index
-      @concoction_types = ConcoctionType.all.order :name
+      @concoction_types = paginate(ConcoctionType.all, default_sort_by: :name)
 
       render json: @concoction_types, content_type: 'application.vnd.json+api'
     end

@@ -11,6 +11,7 @@ gem 'select2-rails'
 gem 'active_model_serializers', '~> 0.10.0.rc3', github: 'rails-api/active_model_serializers'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'kaminari-neo4j'
 
 # Database
 gem 'neo4j', '~> 5.2.10'
@@ -43,7 +44,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'stackprof'
-  gem 'web-console', '~> 2.0'
 end
 
 group :development do

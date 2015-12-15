@@ -1,10 +1,12 @@
 module Api
   class IngredientsController < ApplicationController
+    include ControllerPaging
+
     before_action :set_ingredient, only: %i[show edit update destroy]
 
     # GET /ingredients
     def index
-      @ingredients = Ingredient.all.order :name
+      @ingredients = paginate(Ingredient.all, default_sort_by: :name)
 
       render json: @ingredients, content_type: 'application/vnd.json+api'
     end

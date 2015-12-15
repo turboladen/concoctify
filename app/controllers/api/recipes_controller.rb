@@ -1,11 +1,13 @@
 module Api
   class RecipesController < ApplicationController
+    include ControllerPaging
+
     before_action :set_recipe, only: %i[show edit update destroy influencing_recipes]
 
     # GET /recipes
     # GET /recipes.json
     def index
-      @recipes = Recipe.all
+      @recipes = paginate(Recipe.all)
 
       render json: @recipes, include: %w[concoction_type ingredients needs_ingredients],
                              content_type: 'application/vnd.json+api'

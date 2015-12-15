@@ -1,10 +1,12 @@
 module Api
   class ConcoctionsController < ApplicationController
+    include ControllerPaging
+
     before_action :set_concoction, only: %i[show edit update destroy]
 
     # GET /concoctions
     def index
-      @concoctions = Concoction.all
+      @concoctions = paginate(Concoction.all)
 
       render json: @concoctions, include: %w[concoction_type ingredients needs_ingredients],
                                  content_type: 'application/vnd.json+api'
