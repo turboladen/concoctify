@@ -1,4 +1,6 @@
 class RecipeSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
+
   attributes :title,
     :description,
     :directions,
@@ -18,5 +20,15 @@ class RecipeSerializer < ActiveModel::Serializer
 
   def needs_ingredients
     object.ingredients.rels
+  end
+
+  def links
+    {
+      self: api_recipe_path(object.id),
+      concoction_type: concoction_type_api_recipe_path(object.id),
+      concoctions: concoctions_api_recipe_path(object.id),
+      influencing_recipes: influencing_recipes_api_recipe_path(object.id),
+      ingredients: ingredients_api_recipe_path(object.id)
+    }
   end
 end

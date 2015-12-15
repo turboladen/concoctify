@@ -2,7 +2,10 @@ module Api
   class RecipesController < ApplicationController
     include ControllerPaging
 
-    before_action :set_recipe, only: %i[show edit update destroy influencing_recipes]
+    before_action :set_recipe,
+      only: %i[show edit update destroy
+               influencing_recipes concoctions ingredients concoction_type
+    ]
 
     # GET /recipes
     # GET /recipes.json
@@ -21,7 +24,28 @@ module Api
 
     # GET /recipes/1/influencing_recipes
     def influencing_recipes
-      respond_with @recipe.influencing_recipes.to_a
+      render json: paginate(@recipe.influencing_recipes), include: %w[concoction_type ingredients needs_ingredients]
+    end
+
+    # GET /recipes/1/concoctions
+    def concoctions
+      @concoctions = @recipe.concoctions
+
+      render json: paginate(@concoctions)
+    end
+
+    # GET /recipes/1/ingredients
+    def ingredients
+      @ingredients = @recipe.ingredients
+
+      render json: paginate(@ingredients)
+    end
+
+    # GET /recipes/1/concoction_type
+    def concoction_type
+      @concoction_type = @recipe.concoction_type
+
+      render json: @concoction_type
     end
 
     # GET /recipes/new
