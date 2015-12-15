@@ -8,8 +8,13 @@ module ControllerPaging
   def paginate(collection, default_sort_by: nil)
     sort_by = page_params[:order] || default_sort_by
 
-    collection.order(sort_by => page_params[:order_dir]).
-      page(page_params[:page]).per(page_params[:per_page])
+    tmp_collection = if collection.is_a? Array
+                       Kaminari.paginate_array(collection)
+                     else
+                       collection.order(sort_by => page_params[:order_dir])
+                     end
+
+    tmp_collection.page(page_params[:page]).per(page_params[:per_page])
   end
 
   def page_params

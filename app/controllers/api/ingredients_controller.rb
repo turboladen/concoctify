@@ -2,7 +2,8 @@ module Api
   class IngredientsController < ApplicationController
     include ControllerPaging
 
-    before_action :set_ingredient, only: %i[show edit update destroy]
+    before_action :set_ingredient,
+      only: %i[show edit update destroy recipes concoctions concoction_types]
 
     # GET /ingredients
     def index
@@ -14,6 +15,33 @@ module Api
     # GET /ingredients/1
     def show
       respond_with @ingredient
+    end
+
+    # GET /ingredients/1/recipes
+    def recipes
+      render json: paginate(@ingredient.recipes), include: %w[concoction_type needs_ingredients]
+    end
+
+    # GET /ingredients/1/concoctions
+    def concoctions
+      # @concoctions = @ingredient.recipes.concoctions
+
+      @concoctions = @ingredient.recipes.flat_map do |recipe|
+        recipe.concoctions.to_a
+      end
+
+      render json: paginate(@concoctions)
+    end
+
+    # GET /ingredients/1/concoction_types
+    def concoction_types
+      # @concoction_types = @ingredient.recipes.concoction_types
+
+      @concoction_types = @ingredient.recipes.map do |recipe|
+        recipe.concoction_type
+      end
+
+      render json: paginate(@concoction_types)
     end
 
     # GET /ingredients/new
