@@ -41,14 +41,4 @@ class Recipe
   def distinct_ingredients
     ingredients(:i).order(:name).pluck('DISTINCT i')
   end
-
-  def includeds
-    includeds = []
-
-    includeds += distinct_ingredients
-    includeds += ingredients.rels
-    includeds += [concoction_type]
-
-    includeds.compact
-  end
 end

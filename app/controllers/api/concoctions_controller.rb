@@ -2,7 +2,10 @@ module Api
   class ConcoctionsController < ApplicationController
     include ControllerPaging
 
-    before_action :set_concoction, only: %i[show edit update destroy]
+    before_action :set_concoction,
+      only: %i[show edit update destroy
+               recipe influencing_recipes concoction_type ingredients
+    ]
 
     # GET /concoctions
     def index
@@ -14,16 +17,17 @@ module Api
 
     # GET /concoctions/1
     def show
-      render json: @concoction, include: %w[concoction_type ingredients needs_ingredients]
+      render json: @concoction, include: %w[recipe]
+    end
+
+    # GET /concoctions/1/recipe
+    def recipe
+      render json: @concoction.recipe, include: %w[concoction_type ingredients needs_ingredients]
     end
 
     # GET /concoctions/new
     def new
       @concoction = Concoction.new
-    end
-
-    # GET /concoctions/1/edit
-    def edit
     end
 
     # POST /concoctions

@@ -24,22 +24,14 @@ module Api
 
     # GET /ingredients/1/concoctions
     def concoctions
-      # @concoctions = @ingredient.recipes.concoctions
-
-      @concoctions = @ingredient.recipes.flat_map do |recipe|
-        recipe.concoctions.to_a
-      end
+      @concoctions = @ingredient.concoctions
 
       render json: paginate(@concoctions)
     end
 
     # GET /ingredients/1/concoction_types
     def concoction_types
-      # @concoction_types = @ingredient.recipes.concoction_types
-
-      @concoction_types = @ingredient.recipes.map do |recipe|
-        recipe.concoction_type
-      end
+      @concoction_types = @ingredient.concoction_types
 
       render json: paginate(@concoction_types)
     end

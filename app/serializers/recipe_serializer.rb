@@ -26,9 +26,24 @@ class RecipeSerializer < ActiveModel::Serializer
     {
       self: api_recipe_path(object.id),
       concoction_type: concoction_type_api_recipe_path(object.id),
-      concoctions: concoctions_api_recipe_path(object.id),
-      influencing_recipes: influencing_recipes_api_recipe_path(object.id),
-      ingredients: ingredients_api_recipe_path(object.id)
+      concoctions: {
+        href: concoctions_api_recipe_path(object.id),
+        meta: {
+          count: object.concoctions.count
+        }
+      },
+      influencing_recipes: {
+        href: influencing_recipes_api_recipe_path(object.id),
+        meta: {
+          count: object.influencing_recipes.count
+        }
+      },
+      ingredients: {
+        href: ingredients_api_recipe_path(object.id),
+        meta: {
+          count: object.ingredients.count
+        }
+      }
     }
   end
 end

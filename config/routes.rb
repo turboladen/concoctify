@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     end
 
     resources :concoction_types, except: %i[edit]
-    resources :concoctions, except: %i[edit]
+
+    resources :concoctions, except: %i[edit] do
+      get :recipe, on: :member
+    end
 
     resources :recipes, except: %i[edit] do
       get :concoction_type, on: :member
