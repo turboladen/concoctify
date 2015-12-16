@@ -42,9 +42,13 @@ module Api
 
     # POST /concoction_types
     def create
-      @concoction_type = ConcoctionType.create(concoction_type_params)
+      @concoction_type = ConcoctionType.new(concoction_type_params)
 
-      respond_with @concoction_type
+      if @concoction_type.save
+        render json: @concoction_type, location: api_concoction_type_url(@concoction_type)
+      else
+        render json: @concoction_type.errors
+      end
     end
 
     # PATCH/PUT /concoction_types/1
@@ -56,9 +60,11 @@ module Api
 
     # DELETE /concoction_types/1
     def destroy
-      @concoction_type.destroy
-
-      respond_with @concoction_type
+      if @concoction_type.destroy
+        head :no_content
+      else
+        render json: @concoction_type.errors
+      end
     end
 
     private
@@ -70,7 +76,7 @@ module Api
 
     # Only allow a trusted parameter "white list" through.
     def concoction_type_params
-      params.require(:concoction_type).permit(:name)
+      data_params.require(:attributes).permit(:name)
     end
   end
 end
