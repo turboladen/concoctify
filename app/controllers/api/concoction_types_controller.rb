@@ -45,7 +45,7 @@ module Api
       @concoction_type = ConcoctionType.new(concoction_type_params)
 
       if @concoction_type.save
-        render json: @concoction_type, location: api_concoction_type_url(@concoction_type)
+        render json: @concoction_type, location: api_concoction_type_url(@concoction_type), status: :created
       else
         render json: @concoction_type.errors
       end

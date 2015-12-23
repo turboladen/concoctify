@@ -55,9 +55,13 @@ module Api
     # POST /recipes
     # POST /recipes.json
     def create
-      @recipe = Recipe.create(recipe_params)
+      @recipe = Recipe.new(recipe_params)
 
-      respond_with @recipe
+      if @recipe.save
+        render json: @recipe, location: api_recipe_url(@recipe), status: :created
+      else
+        render json: @recipe.errors
+      end
     end
 
     # PATCH/PUT /recipes/1
@@ -84,7 +88,7 @@ module Api
     end
 
     def recipe_params
-      params.require(:recipe)
+      data_params.require(:attributes).permit(:title, :description, :directions, :yields, :yields_unit)
     end
   end
 end
