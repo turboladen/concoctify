@@ -23,7 +23,9 @@ module ControllerPaging
     paging[:page] = paging.fetch(:page, 1).to_i
     paging[:per_page] = paging.fetch(:per_page, 25).to_i
     paging[:order_dir] ||= :asc
-    Rails.logger.debug "#{paging[:page]}, #{paging[:per_page]}, #{paging[:order]}, #{paging[:order_dir]}"
+    Rails.logger.debug do
+      "#{paging[:page]}, #{paging[:per_page]}, #{paging[:order]}, #{paging[:order_dir]}"
+    end
 
     paging
   end

@@ -18,142 +18,140 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe Api::NeedsIngredientsController, :type => :controller do
-
+RSpec.describe Api::NeedsIngredientsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # NeedsIngredient. As you add validations to NeedsIngredient, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # Api::NeedsIngredientsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all needs_ingredients as @needs_ingredients" do
+  describe 'GET index' do
+    it 'assigns all needs_ingredients as @needs_ingredients' do
       needs_ingredient = NeedsIngredient.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:needs_ingredients)).to eq([needs_ingredient])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested api_needs_ingredient as @api_needs_ingredient" do
+  describe 'GET show' do
+    it 'assigns the requested api_needs_ingredient as @api_needs_ingredient' do
       needs_ingredient = NeedsIngredient.create! valid_attributes
-      get :show, {:id => needs_ingredient.to_param}, valid_session
+      get :show, { id: needs_ingredient.to_param }, valid_session
       expect(assigns(:api_needs_ingredient)).to eq(needs_ingredient)
     end
   end
 
-  describe "GET new" do
-    it "assigns a new api_needs_ingredient as @api_needs_ingredient" do
+  describe 'GET new' do
+    it 'assigns a new api_needs_ingredient as @api_needs_ingredient' do
       get :new, {}, valid_session
       expect(assigns(:api_needs_ingredient)).to be_a_new(NeedsIngredient)
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested api_needs_ingredient as @api_needs_ingredient" do
+  describe 'GET edit' do
+    it 'assigns the requested api_needs_ingredient as @api_needs_ingredient' do
       needs_ingredient = NeedsIngredient.create! valid_attributes
-      get :edit, {:id => needs_ingredient.to_param}, valid_session
+      get :edit, { id: needs_ingredient.to_param }, valid_session
       expect(assigns(:api_needs_ingredient)).to eq(needs_ingredient)
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new NeedsIngredient" do
-        expect {
-          post :create, {:api_needs_ingredient => valid_attributes}, valid_session
-        }.to change(NeedsIngredient, :count).by(1)
+  describe 'POST create' do
+    describe 'with valid params' do
+      it 'creates a new NeedsIngredient' do
+        expect do
+          post :create, { api_needs_ingredient: valid_attributes }, valid_session
+        end.to change(NeedsIngredient, :count).by(1)
       end
 
-      it "assigns a newly created api_needs_ingredient as @api_needs_ingredient" do
-        post :create, {:api_needs_ingredient => valid_attributes}, valid_session
+      it 'assigns a newly created api_needs_ingredient as @api_needs_ingredient' do
+        post :create, { api_needs_ingredient: valid_attributes }, valid_session
         expect(assigns(:api_needs_ingredient)).to be_a(NeedsIngredient)
         expect(assigns(:api_needs_ingredient)).to be_persisted
       end
 
-      it "redirects to the created api_needs_ingredient" do
-        post :create, {:api_needs_ingredient => valid_attributes}, valid_session
+      it 'redirects to the created api_needs_ingredient' do
+        post :create, { api_needs_ingredient: valid_attributes }, valid_session
         expect(response).to redirect_to(NeedsIngredient.last)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved api_needs_ingredient as @api_needs_ingredient" do
-        post :create, {:api_needs_ingredient => invalid_attributes}, valid_session
+    describe 'with invalid params' do
+      it 'assigns a newly created but unsaved api_needs_ingredient as @api_needs_ingredient' do
+        post :create, { api_needs_ingredient: invalid_attributes }, valid_session
         expect(assigns(:api_needs_ingredient)).to be_a_new(NeedsIngredient)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:api_needs_ingredient => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        post :create, { api_needs_ingredient: invalid_attributes }, valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested api_needs_ingredient" do
-        needs_ingredient = NeedsIngredient.create! valid_attributes
-        put :update, {:id => needs_ingredient.to_param, :api_needs_ingredient => new_attributes}, valid_session
-        needs_ingredient.reload
-        skip("Add assertions for updated state")
+  describe 'PUT update' do
+    describe 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested api_needs_ingredient as @api_needs_ingredient" do
+      it 'updates the requested api_needs_ingredient' do
         needs_ingredient = NeedsIngredient.create! valid_attributes
-        put :update, {:id => needs_ingredient.to_param, :api_needs_ingredient => valid_attributes}, valid_session
+        put :update, { id: needs_ingredient.to_param, api_needs_ingredient: new_attributes }, valid_session
+        needs_ingredient.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested api_needs_ingredient as @api_needs_ingredient' do
+        needs_ingredient = NeedsIngredient.create! valid_attributes
+        put :update, { id: needs_ingredient.to_param, api_needs_ingredient: valid_attributes }, valid_session
         expect(assigns(:api_needs_ingredient)).to eq(needs_ingredient)
       end
 
-      it "redirects to the api_needs_ingredient" do
+      it 'redirects to the api_needs_ingredient' do
         needs_ingredient = NeedsIngredient.create! valid_attributes
-        put :update, {:id => needs_ingredient.to_param, :api_needs_ingredient => valid_attributes}, valid_session
+        put :update, { id: needs_ingredient.to_param, api_needs_ingredient: valid_attributes }, valid_session
         expect(response).to redirect_to(needs_ingredient)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the api_needs_ingredient as @api_needs_ingredient" do
+    describe 'with invalid params' do
+      it 'assigns the api_needs_ingredient as @api_needs_ingredient' do
         needs_ingredient = NeedsIngredient.create! valid_attributes
-        put :update, {:id => needs_ingredient.to_param, :api_needs_ingredient => invalid_attributes}, valid_session
+        put :update, { id: needs_ingredient.to_param, api_needs_ingredient: invalid_attributes }, valid_session
         expect(assigns(:api_needs_ingredient)).to eq(needs_ingredient)
       end
 
       it "re-renders the 'edit' template" do
         needs_ingredient = NeedsIngredient.create! valid_attributes
-        put :update, {:id => needs_ingredient.to_param, :api_needs_ingredient => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, { id: needs_ingredient.to_param, api_needs_ingredient: invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested api_needs_ingredient" do
+  describe 'DELETE destroy' do
+    it 'destroys the requested api_needs_ingredient' do
       needs_ingredient = NeedsIngredient.create! valid_attributes
-      expect {
-        delete :destroy, {:id => needs_ingredient.to_param}, valid_session
-      }.to change(NeedsIngredient, :count).by(-1)
+      expect do
+        delete :destroy, { id: needs_ingredient.to_param }, valid_session
+      end.to change(NeedsIngredient, :count).by(-1)
     end
 
-    it "redirects to the needs_ingredients list" do
+    it 'redirects to the needs_ingredients list' do
       needs_ingredient = NeedsIngredient.create! valid_attributes
-      delete :destroy, {:id => needs_ingredient.to_param}, valid_session
+      delete :destroy, { id: needs_ingredient.to_param }, valid_session
       expect(response).to redirect_to(needs_ingredients_url)
     end
   end
-
 end

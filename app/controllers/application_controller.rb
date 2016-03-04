@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  rescue_from Neo4j::RecordNotFound do |exception|
+  rescue_from Neo4j::RecordNotFound do |_exception|
     message = 'Unable to find record'
     title = 'Record not found'
 

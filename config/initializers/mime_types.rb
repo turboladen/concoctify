@@ -8,7 +8,7 @@ module Concoctify
     application/vnd.api+json
     text/x-json
     application/json
-  ]
+  ].freeze
 end
 
 Mime::Type.unregister :json

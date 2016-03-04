@@ -5,6 +5,7 @@ class ConcoctionTypeSerializer < ActiveModel::Serializer
     :created_at,
     :updated_at
 
+  # @return [Hash]
   def links
     {
       self: api_concoction_type_path(object.id),

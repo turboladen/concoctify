@@ -14,7 +14,7 @@ class Ingredient
     uniqueness: true
 
   def concoction_types
-    recipes.map { |recipe| recipe.concoction_type }.uniq
+    recipes.map(&:concoction_type).uniq
   end
 
   def concoctions

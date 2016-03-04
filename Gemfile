@@ -8,7 +8,8 @@ gem 'autoprefixer-rails'
 gem 'select2-rails'
 
 # Controller things
-gem 'active_model_serializers', '~> 0.10.0.rc3', github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.0.rc3',
+  github: 'rails-api/active_model_serializers'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'kaminari-neo4j'
@@ -29,7 +30,7 @@ gem 'ruby-units'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :production do
   # Serving things

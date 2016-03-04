@@ -22,6 +22,7 @@ class RecipeSerializer < ActiveModel::Serializer
     object.ingredients.rels
   end
 
+  # @return [Hash]
   def links
     {
       self: api_recipe_path(object.id),

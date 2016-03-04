@@ -5,6 +5,7 @@ class IngredientSerializer < ActiveModel::Serializer
     :created_at,
     :updated_at
 
+  # @return [Hash]
   def links
     {
       self: api_ingredient_path(object.id),

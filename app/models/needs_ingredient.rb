@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class NeedsIngredient
   include Neo4j::ActiveRel
   include Neo4j::Timestamps
