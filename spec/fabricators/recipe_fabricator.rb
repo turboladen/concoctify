@@ -7,11 +7,10 @@ Fabricator :recipe do
   yields      { rand(1..15) }
   yields_unit 'gallons'
 
-  # after_create do |recipe, _|
-  #   FabricatorHelp.make_concoction_type(recipe)
-  #   3.times { FabricatorHelp.make_ingredient(recipe) }
-  #   recipe.save!
-  # end
+  after_create do |recipe, _|
+    FabricatorHelp.make_concoction_type(recipe)
+    3.times { FabricatorHelp.make_ingredient(recipe) }
+  end
 end
 
 Fabricator :recipe_with_extras, from: :recipe do

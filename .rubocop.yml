@@ -1,6 +1,9 @@
 Metrics/LineLength:
   Max: 80
 
+Rails:
+  Enabled: true
+
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
@@ -27,4 +30,3 @@ AllCops:
     - Gemfile
   Exclude:
     - vendor/bundle/**/*
-  RunRailsCops: true
