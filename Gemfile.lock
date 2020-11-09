@@ -147,7 +147,7 @@ GEM
       rack (>= 1.1, < 2.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.4)
+    rack (1.6.13)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
     rack-minitest (0.0.10)
